@@ -5,6 +5,8 @@ import google.generativeai as genai
 # .\venv\Scripts\activate
 # pip install google-generativeai
 
+load_dotenv()
+
 
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
@@ -14,15 +16,17 @@ generation_config = {
     "top_p": 0.95,
     "top_k": 40,
     "max_output_tokens": 8192,
-    "response_mime_type": "text/plain",
+    "response_mime_type": "application/json",
 }
+INSTRUCTION = os.getenv("INSTRUCTION")
 
+# create a model instance and save into variable model
 model = genai.GenerativeModel(
     model_name="gemini-1.5-pro",
     generation_config=generation_config,
-    system_instruction="You are a personal assistant that manage a database. Your role is to interpret natural language commands and convert them into database operations (INSERT, UPDATE, DELETE, GET).",
+    system_instruction=os.getenv("INSTRUCTION")
 )
-
+# You are a personal assistant that manage a database. Your role is to interpret natural language commands and convert them into database operations (INSERT, UPDATE, DELETE, GET).
 history = []
 
 print('Hello, this is your personalized database manager, how can I help you')
@@ -37,10 +41,9 @@ while True:
 
     response = chat_session.send_message(user_input) #input get pass into gemini api
     model_response = response.text
-
-    # print(response)
-
+    
     print(model_response)
+    
 
     # put conversation into history 
     history.append({'role': 'user', 'parts': [user_input]})
