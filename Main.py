@@ -22,6 +22,3 @@ while True:
     data.init_table(DATABASE_NAME)
 
 
-# while True:
-#     user_input = chat_bot.start_chat()
-#     model_response = chat_bot.send_message(user_input)

@@ -26,7 +26,11 @@ class SQL():
         
     def init_table(self, db_name):
         # Creates/opens a database file named 'parameter'
-        con = sqlite3.connect('key_value_store_database')
+        con = sqlite3.connect(db_name)
+
+        return con
+    def init_cursor(self, table):
+        cur = table.cursor()
         # Create a cursor
         cur = con.cursor()
         # create a table
