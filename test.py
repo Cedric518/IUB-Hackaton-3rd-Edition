@@ -17,7 +17,11 @@ class TestRunner:
     # Test that prompting works
     t1 = Test("Add Value 8487684148 to Key phone numbers", "{\"sql/\": \"INSERT INTO key_value_store (key, value, created_datetime, updated_datetime) VALUES (?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)\", \"parameters\": [\"phone numbers\", \"8487684148\"]}")
     t1.check() # returns true
-    # Test for filtering of prompts
+    # Tests for filtering of prompts
     t2 = Test("\n", "")
-    # Test for
+    t3 = Test("\t", "")
+    t4 = Test("", "")
+    t2.check() # returns true
+    t3.check() # returns true
+    t4.check() # returns true
 
