@@ -39,6 +39,15 @@ class ChatModel:
         self.chat_session = self.model.start_chat(history=self.history)
 
         return user_input
+    
+    def test_start_chat(self, user_input):
+        print('Hello, this is your personalized database manager, how can I help you')
+
+        self.user_input = user_input
+
+        self.chat_session = self.model.start_chat(history=self.history)
+
+        return user_input
 
     def send_message(self, user_input):
         response = self.chat_session.send_message(user_input)
