@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 import google.generativeai as genai
-from sql import SQL
+from DatabaseManager import DatabaseManager
 from geminichat import ChatModel
 
 load_dotenv()
@@ -17,11 +17,5 @@ while True:
     user_input = chat_bot.start_chat()
     model_response = chat_bot.send_message(user_input)
 
-    data = SQL(model_response['sql'], model_response['parameters'])
-
-    data.init_table(DATABASE_NAME)
-
-
-# while True:
-#     user_input = chat_bot.start_chat()
-#     model_response = chat_bot.send_message(user_input)
+    manager = DatabaseManager(DATABASE_NAME)
+    manager.push_data()

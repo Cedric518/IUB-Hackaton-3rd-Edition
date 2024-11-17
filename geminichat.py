@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 import google.generativeai as genai
-from sql import SQL
+from DatabaseManager import DatabaseManager
 import json
 # -m venv venv
 # .\venv\Scripts\activate
