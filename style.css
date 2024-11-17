@@ -1,0 +1,127 @@
+/* costume properties */
+:root {
+    --clr-white: rgb(255, 255, 255);
+    --clr-purple: rgb(72, 42, 85);
+    --clr-lighter-grey: #eaeaea;
+    --clr-light-grey: #ccc;
+  }
+  
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: "Jura", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #2f2e38;
+  }
+  
+  .chatBot {
+    border: 3px solid #161140;
+    border-radius: 10px;
+    margin: 50px auto;
+    overflow: hidden;
+    width: 500px;
+    overflow-y: clip;
+    height: 600px;
+    background: var(--clr-white);
+    background-size: contain;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  header {
+    background-color: var(--clr-purple);
+    text-align: center;
+    padding: 10px 0;
+    border-radius: 7px 7px 0 0;
+  }
+  header h2 {
+    color: var(--clr-white);
+    margin: 0;
+  }
+  
+  
+  .chatbox {
+    padding: 15px;
+    list-style: none;
+    overflow-y: auto;
+    height: 400px;
+  }
+  
+  .chatbox li {
+    margin-bottom: 10px;
+  }
+  
+  .chat p {
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 70%;
+    word-wrap: break-word;
+  }
+  
+  .chat-outgoing p {
+    background-color: #16246a;
+    align-self: flex-end;
+    color: var(--clr-white);
+  }
+  
+  .chat-incoming p {
+    background-color: var(--clr-lighter-grey);
+  }
+  
+  .chat-input {
+    padding: 10px;
+    border-top: 1px solid var(--clr-light-grey);
+  }
+  
+  .chat-input textarea {
+    width: 522px;
+    padding: 10px;
+    border: 1px solid var(--clr-light-grey);
+    border-radius: 7px;
+    resize: none;
+    outline: none;
+    overflow-y: scroll;
+    background-color: #25295f85;
+    font-size: 16px;
+    color: #183067;
+    font-weight: 600;
+    margin-top: -10px;
+    margin-left: -15px;
+    height: 71px;
+  }
+  
+  
+  .chatbox .chat p.error {
+    color: var(--clr-white);
+    background-color: #ff3737e8;
+  }
+  
+  #sendBTN {
+    width: 100%;
+    padding: 8px;
+    border: 0;
+    outline: none;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 7px;
+    background-color: #263769;
+    cursor: pointer;
+    color:var(--clr-white);
+    margin-top: 12px;
+  }
+  
+  .lastMessage {
+    margin-top: 50px;
+    font-size: 35px;
+    font-weight: 600;
+    color: darkgreen;
+    margin-left: 550px;
+  }
