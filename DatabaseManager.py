@@ -56,7 +56,7 @@ class DatabaseManager():
     def update_data(self, sql, parameters= None):
         try:
             if parameters is None: #check if returns correctly
-                raise ValueError("Parameters cannot be None")
+                raise ValueError("Parameters connot be None")
             
             if isinstance(parameters, (list, tuple)):
                 if len(parameters) == 2: # check if returns has two parameter
@@ -64,7 +64,7 @@ class DatabaseManager():
                     self.connection.commit()
                     print(f"New record added: {parameters[1]} == {parameters[0]}")
             else:
-                raise ValueError('Parameters must a list/tuple with exactly 2 values')
+                raise ValueError('Paramters must a list/tuple with exactly 2 values')
             
             if self.cursor.rowcount == 0: #this is to check if there is any modification in cursor to know if there is the specified value to update, if cursor.rowcount == 0 that means there is nothing to update and should raise an error
                 print(f"No record found with key: {parameters[1]}. Use add_value instead.")
@@ -105,6 +105,7 @@ class DatabaseManager():
         except sqlite3.Error as e:
             print(f"Error: {e}")
 
+    #call when action == 'DELETE'
     def delete_data(self, sql, parameters):
         try:
             if parameters is None:
@@ -119,32 +120,27 @@ class DatabaseManager():
                     if self.cursor.rowcount == 0: #this is to check if there is any modification in cursor to know if there is the specified value to delect, if cursor.rowcount == 0 that means there is nothing to delect and should raise an error
                         print(f"No record found with key: {parameters}")
                         return False
-                    print(f"Successfully deleted key: {parameters}")
+                    print(f"Successfully delected key: {parameters}")
 
         except sqlite3.Error as e:
             print(f"Delete error: {e}")
             self.connection.rollback()
             raise
 
+    #call when action == 'DELETE_ALL'    
     def delete_all(self, sql):
         try:
 
             self.cursor.execute(sql)
 
             self.connection.commit()
-            print(f"Deleted all {self.cursor.rowcount} records")
+            print(f"Delected all {self.cursor.rowcount} records")
             return self.cursor.rowcount
         
         except sqlite3.Error as e:
             print(f"Delete error: {e}")
             self.connection.rollback()
-            raise
-
-    def close(self):
-        if self.connection:
-            self.cursor.close()
-            self.connection.close()
-            
+            raise     
 
     def show_data(self):
         try:

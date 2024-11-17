@@ -29,37 +29,20 @@ class ChatModel:
         )
 
         self.history = []
-        self.chat_session = None
-
-    def start_chat(self):
-        print('Hello, this is your personalized database manager, how can I help you')
-
-        user_input = input('You: ') #system request input from user
-
-        self.chat_session = self.model.start_chat(history=self.history)
-
-        return user_input
-    
-    def test_start_chat(self, user_input):
-        print('Hello, this is your personalized database manager, how can I help you')
-
-        self.user_input = user_input
-
-        self.chat_session = self.model.start_chat(history=self.history)
-
-        return user_input
+        self.chat = self.model.start_chat(history=self.history)
 
     def send_message(self, user_input):
-        response = self.chat_session.send_message(user_input)
+        response = self.chat.send_message(user_input)
         self._update_history(user_input, response.text)
-        return self.convert(response.text)
+        return self._convert(response.text)
     
     def _update_history(self, user_input, model_response):
         self.history.append({'role': 'user', 'parts': [user_input]})
         self.history.append({'role': 'model', 'parts': [model_response]})
 
-    def convert(self, msg):
+    def _convert(self, msg):
         return json.loads(msg)
+
 
 
 
