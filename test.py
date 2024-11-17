@@ -7,12 +7,10 @@ class Test:
         self.expected = expected
 
     def __str__(self):
+        
+        return self.prompt == self.expected
         return f"User:{self.prompt} \n Expected Answer:{self.expected}"
 
-    def check(self):
-        if self.expected == """response variable""":
-            return True
-        return False
 
 
 class TestRunner:
